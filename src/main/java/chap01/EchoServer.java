@@ -22,10 +22,10 @@ public class EchoServer {
     }
 
     public static void main (String[] args) throws Exception {
-        if (args.length != 1) {
-            System.err.println("Usage: " + EchoServer.class.getSimpleName() + " <port>");
-        }
-        int port = Integer.parseInt(args[0]);
+        // if (args.length != 1) {
+        //     System.err.println("Usage: " + EchoServer.class.getSimpleName() + " <port>");
+        // }
+        int port = Integer.parseInt("8001");
         new EchoServer(port).start();
     }
 
@@ -39,7 +39,7 @@ public class EchoServer {
              .localAddress(new InetSocketAddress(port))
              .childHandler(new ChannelInitializer<SocketChannel>() {
                  @Override
-                 public void initChannel (SocketChannel ch) throws Exception {
+                 public void initChannel (SocketChannel ch) {
                      ch.pipeline().addLast(serverHandler);
                  }
              });
